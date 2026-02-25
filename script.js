@@ -42,7 +42,7 @@ const projects = [
 ];
 
 // 2) OPTIONAL: EDIT YOUR DISPLAY NAME/ROLE HERE (also in index.html)
-const displayName = 'Viet Anh';
+const displayName = 'Ha Dao';
 const displayRole = 'User Experience Designer';
 
 // Build pages: cover + project pages + back cover
