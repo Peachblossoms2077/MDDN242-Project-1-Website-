@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Basic Website</title>
+  <title>Ha Dao • User Experience Designer • Portfolio</title>
 
   <!-- Describe your page — shows up in search results and browser tabs -->
-  <meta name="description" content="A short description of your page goes here.">
+  <meta name="description" content="A food menu-style portfolio with flipping pages.">
 
   <!-- Your styles -->
   <link rel="stylesheet" href="styles.css">
-
   <style>
     /* Keyboard users need to see where focus is */
     :focus-visible {
@@ -29,37 +28,36 @@
 </head>
 <body>
 
-  <header>
-    <h1 class="title">Basic Website</h1>
+  <header class="site-header">
+    <h1 class="site-title">
+      <span class="site-title__name">Ha Dao</span>
+      <span class="site-title__dot" aria-hidden="true">•</span>
+      <span class="site-title__role">User Experience Designer</span>
+      <span class="site-title__dot" aria-hidden="true">•</span>
+      <span class="site-title__portfolio">Portfolio</span>
+    </h1>
+    <p class="site-subtitle">A food menu of my projects — each project is a dish.</p>
   </header>
 
-  <nav aria-label="Primary">
-    <ul>
-      <li><a href="#" aria-current="page">Home</a></li>
-    </ul>
-  </nav>
+  <main id="main-content" class="menu-stage">
+    <button class="nav-arrow nav-arrow--left" id="prevBtn" type="button" aria-label="Previous page"></button>
 
-  <main id="main-content">
-    <div class="underline" aria-hidden="true"></div>
-    <p>Your content goes here.</p>
-    <button class="main-button" id="myButton" type="button">Button</button>
+    <section class="menu-wrap" aria-label="Portfolio menu">
+      <div class="menu-perspective">
+        <div class="menu-card" id="menuCard" role="group" aria-roledescription="flippable menu" aria-live="polite">
+          <div class="menu-face menu-face--front" id="pageFront"></div>
+          <div class="menu-face menu-face--back" id="pageBack"></div>
+        </div>
+      </div>
+      <p class="menu-hint" id="menuHint">Use the arrows (or ← / →) to flip.</p>
+    </section>
+
+    <button class="nav-arrow nav-arrow--right" id="nextBtn" type="button" aria-label="Next page"></button>
   </main>
 
   <footer>
     <small>&copy; <span id="year"></span> Ha Dao</small>
   </footer>
-
-  <script>
-    // Keep the copyright year current automatically
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const btn = document.getElementById('myButton');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        alert('It Does Nothing!');
-      });
-    }
-  </script>
 
   <!-- Your scripts -->
   <script src="script.js"></script>
