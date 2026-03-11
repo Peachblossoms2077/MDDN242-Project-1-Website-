@@ -5,19 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ha Dao • User Experience Designer • Portfolio</title>
 
-  <!-- Describe your page — shows up in search results and browser tabs -->
-  <meta name="description" content="A food menu-style portfolio with flipping pages.">
+  <meta name="description" content="A 3D bubble menu portfolio for Ha Dao.">
 
-  <!-- Your styles -->
   <link rel="stylesheet" href="styles.css">
+
   <style>
-    /* Keyboard users need to see where focus is */
     :focus-visible {
       outline: 2px solid currentColor;
       outline-offset: 2px;
     }
-
-    /* Respect users who prefer less motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -25,39 +21,45 @@
       }
     }
   </style>
+
+  <!-- Three.js (non-module) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 </head>
 <body>
 
-  <header class="site-header">
-    <h1 class="site-title">
-      <span class="site-title__name">Ha Dao</span>
-      <span class="site-title__dot" aria-hidden="true">•</span>
-      <span class="site-title__role">User Experience Designer</span>
-      <span class="site-title__dot" aria-hidden="true">•</span>
-      <span class="site-title__portfolio">Portfolio</span>
-    </h1>
-    <p class="site-subtitle">A food menu of my projects — each project is a dish.</p>
+  <header class="hud" aria-label="Site header">
+    <div class="hud__title">
+      <h1 class="title">Ha Dao</h1>
+      <p class="subtitle">User Experience Designer • Portfolio</p>
+    </div>
+
+    <div class="hud__help" aria-label="Controls">
+      <div class="chip">Right drag: pan</div>
+      <div class="chip">Scroll: zoom</div>
+    </div>
   </header>
 
-  <main id="main-content" class="menu-stage">
-    <button class="nav-arrow nav-arrow--left" id="prevBtn" type="button" aria-label="Previous page"></button>
+  <main id="main-content">
+    <canvas id="scene" aria-label="3D bubble menu canvas"></canvas>
 
-    <section class="menu-wrap" aria-label="Portfolio menu">
-      <div class="book-perspective" aria-live="polite">
-        <div class="book" id="book" role="group" aria-roledescription="booklet menu"></div>
-      </div>
-      <p class="menu-hint" id="menuHint">Use the arrows (or ← / →) to turn pages.</p>
-    </section>
-
-    <button class="nav-arrow nav-arrow--right" id="nextBtn" type="button" aria-label="Next page"></button>
+    <div class="breadcrumbs" aria-live="polite" aria-atomic="true">
+      <span class="breadcrumbs__label">Path:</span>
+      <span id="crumbs">Ha Dao</span>
+    </div>
   </main>
 
-  <footer>
+  <div class="recenter-wrap">
+    <button id="recenter" class="recenter-btn" type="button" aria-label="Recenter view">Recenter View</button>
+  </div>
+
+  <footer class="footer">
     <small>&copy; <span id="year"></span> Ha Dao</small>
   </footer>
 
-  <!-- Your scripts -->
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
+  <script src="script.js"></script>
 </body>
 </html>
